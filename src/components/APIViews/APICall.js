@@ -1,9 +1,10 @@
-import React, { useState, useEffect, Suspense } from 'react';
+import React, { useState, useEffect, Suspense } from "react";
 //import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs"
-import styled from 'styled-components';
+import styled from "styled-components";
+import { Button } from "reakit/Button";
 //import APIResults from './APIResults';
-const APIResults = React.lazy(() => import('./APIResults'));
-
+import APIFunctions from "./APIFunctions";
+import APIResults from "./APIResults";
 
 const Wrapper = styled.div`
   display: flex;
@@ -36,22 +37,27 @@ const Input = styled.input`
   height: 25px;
 `;
 
-const Button = styled.button`
-  vertical-align: middle;
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
   margin: 15px;
-  height: 25px;
-  width: 100px;
 `;
+// const Button = styled.button`
+//   vertical-align: middle;
+//   margin: 15px;
+//   height: 25px;
+//   width: 100px;
+// `;
 
-let getInitialState = (parms) => {
+let getInitialState = parms => {
   let parmsState = [];
   parms.forEach(parm => {
     parmsState.push({
-      value: ''
-    }) 
-  })
+      value: ""
+    });
+  });
   return parmsState;
-}
+};
 
 const APICall = ({ location, apiCallFunction, parms }) => {
   // Result of API call
@@ -62,25 +68,24 @@ const APICall = ({ location, apiCallFunction, parms }) => {
   useEffect(() => {
     // Set the intitial state to an array of objects with one object for each
     // argument.  Need this so that setFields call will have something to set.
-    setFields(getInitialState(parms))
-    setResults(null)
-  }, [parms])
-  
+    setFields(getInitialState(parms));
+    setResults(null);
+  }, [parms]);
+
   // update the proper argument entry with what the input field that was updated
   function handleChange(idx, event) {
     const values = [...fields];
     values[idx].value = event.target.value;
     setFields(values);
   }
-// need to make sure that getInitialState has updated our state field before rendering/building input fields
+  // need to make sure that getInitialState has updated our state field before rendering/building input fields
   let doRender = fields ? fields.length === parms.length : false;
   return (
     <Wrapper>
-      <Header>
-        {location} API Call
-      </Header>
+      <Header>{location} API Call</Header>
       <InputWrapper>
-        {doRender  && parms.map((field, idx) => {
+        {doRender &&
+          parms.map((field, idx) => {
             return (
               <div key={idx}>
                 <Label>{field.charAt(0).toUpperCase() + field.slice(1)}:</Label>
@@ -89,20 +94,28 @@ const APICall = ({ location, apiCallFunction, parms }) => {
                   onChange={e => handleChange(idx, e)}
                 />
               </div>
-            )
-          })
-        }
+            );
+          })}
       </InputWrapper>
-        <Button 
-          onClick={async () => setResults(await apiCallFunction(...fields.map(field => field.value)))}
+      <ButtonWrapper>
+        <Button
+          onClick={async () =>
+            setResults(
+              await apiCallFunction(
+                ...fields.map(field => {
+                  return field.value.length > 0 ? field.value : undefined;
+                })
+              )
+            )
+          }
         >
           Call API
         </Button>
-      <Suspense fallback={<div>Loading....</div>}>
-        <APIResults results={results} />
-      </Suspense>
+      </ButtonWrapper>
+      <APIFunctions results={results} />
+      <APIResults results={results} />
     </Wrapper>
-  )
+  );
 };
 
 export default APICall;
