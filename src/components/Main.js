@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Provider, Button } from "reakit";
-import * as system from "reakit-system-bootstrap";
 
 import Sidebar from "./Sidebar/Sidebar";
 import APIView from "./APIView";
@@ -60,20 +58,18 @@ const Main = () => {
   let [subMenuState, setSubMenu] = useState();
   console.log(Object.keys(apis));
   return (
-    <Provider unstable_system={system}>
-      <Grid>
-        <Sidebar
-          sidebarItems={sidebarItems}
-          sidebarState={sidebarState}
-          setSidebar={setSidebar}
-          setSubMenu={setSubMenu}
-        />
-        <APIView
-          currSidebarState={sidebarItems[sidebarState]}
-          subMenuState={subMenuState}
-        />
-      </Grid>
-    </Provider>
+    <Grid>
+      <Sidebar
+        sidebarItems={sidebarItems}
+        sidebarState={sidebarState}
+        setSidebar={setSidebar}
+        setSubMenu={setSubMenu}
+      />
+      <APIView
+        currSidebarState={sidebarItems[sidebarState]}
+        subMenuState={subMenuState}
+      />
+    </Grid>
   );
 };
 

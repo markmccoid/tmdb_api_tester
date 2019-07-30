@@ -1,7 +1,7 @@
 import React, { useState, useEffect, Suspense } from "react";
 //import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs"
 import styled from "styled-components";
-import { Button } from "reakit/Button";
+import { Button } from "antd";
 //import APIResults from './APIResults';
 import APIFunctions from "./APIFunctions";
 import APIResults from "./APIResults";
@@ -99,6 +99,7 @@ const APICall = ({ location, apiCallFunction, parms }) => {
       </InputWrapper>
       <ButtonWrapper>
         <Button
+          type="primary"
           onClick={async () =>
             setResults(
               await apiCallFunction(

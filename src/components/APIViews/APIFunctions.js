@@ -3,7 +3,7 @@
 // that will executed and display the results of the function call
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Button } from "reakit/Button";
+import { Button } from "antd";
 import ReactJson from "react-json-view";
 
 const Header = styled.div`
@@ -60,6 +60,7 @@ const APIFunctions = ({ results }) => {
         {embeddedFunctions &&
           embeddedFunctions.map(emFunc => (
             <MyButton
+              type="primary"
               key={emFunc.name}
               onClick={() => runEmbeddedFunction(emFunc.func, emFunc.name)}
             >
