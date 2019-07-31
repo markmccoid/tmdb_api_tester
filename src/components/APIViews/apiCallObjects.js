@@ -30,6 +30,7 @@ import {
   movieSearchByTitle,
   movieGetMovieDetails,
   getImagesForMovie,
+  movieGetPersonDetails,
   discoverMovies
 } from "tmdb_api";
 
@@ -157,6 +158,10 @@ export const APIMovie_ParmsObj = {
   getImagesForMovie: {
     func: fuctionFactory(getImagesForMovie),
     parms: ["movieId", "imageType"]
+  },
+  movieGetPersonDetails: {
+    func: fuctionFactory(movieGetPersonDetails),
+    parms: ["[personId]"]
   },
   discoverMovies: {
     func: fuctionFactory(discoverMovies),
