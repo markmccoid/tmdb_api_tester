@@ -1,22 +1,22 @@
 import {
   getConfig,
-  rawSearchTVByTitle,
-  rawGetEpisodes,
-  rawGetShowDetails,
-  rawGetExternalIds,
-  rawGetCredits,
-  rawGetCreditDetails,
+  rawTVSearchByTitle,
+  rawTVGetEpisodes,
+  rawTVGetShowDetails,
+  rawTVGetExternalIds,
+  rawTVGetCredits,
+  rawTVGetCreditDetails,
   getTVGenres,
   rawGetPersonDetails,
-  rawGetShowImages
+  rawTVGetShowImages
 } from "tmdb_api";
 
 // Movie API imports
 import {
-  rawSearchMovieByTitle,
-  rawGetMovieDetails,
-  rawGetMovieImages,
-  rawGetPersonDetails_Movie,
+  rawMovieSearchByTitle,
+  rawMovieGetDetails,
+  rawMovieGetImages,
+  rawMovieGetPersonDetails,
   rawSearchForPerson,
   searchForPersonId,
   getMovieGenres
@@ -74,32 +74,32 @@ export const TVAPI_ParmsObj = {
     func: fuctionFactory(getTVGenres),
     parms: []
   },
-  rawSearchTVByTitle: {
-    func: fuctionFactory(rawSearchTVByTitle),
+  rawTVSearchByTitle: {
+    func: fuctionFactory(rawTVSearchByTitle),
     parms: ["title"]
   },
-  rawGetEpisodes: {
-    func: fuctionFactory(rawGetEpisodes),
+  rawTVGetEpisodes: {
+    func: fuctionFactory(rawTVGetEpisodes),
     parms: ["showId", "seasonNum"]
   },
-  rawGetShowDetails: {
-    func: fuctionFactory(rawGetShowDetails),
+  rawTVGetShowDetails: {
+    func: fuctionFactory(rawTVGetShowDetails),
     parms: ["showId"]
   },
-  rawGetShowImages: {
-    func: fuctionFactory(rawGetShowImages),
+  rawTVGetShowImages: {
+    func: fuctionFactory(rawTVGetShowImages),
     parms: ["showId"]
   },
-  rawGetExternalIds: {
-    func: fuctionFactory(rawGetExternalIds),
+  rawTVGetExternalIds: {
+    func: fuctionFactory(rawTVGetExternalIds),
     parms: ["showId"]
   },
-  rawGetCredits: {
-    func: fuctionFactory(rawGetCredits),
+  rawTVGetCredits: {
+    func: fuctionFactory(rawTVGetCredits),
     parms: ["showId"]
   },
-  rawGetCreditDetails: {
-    func: fuctionFactory(rawGetCreditDetails),
+  rawTVGetCreditDetails: {
+    func: fuctionFactory(rawTVGetCreditDetails),
     parms: ["creditId"]
   },
   rawGetPersonDetails: {
@@ -109,20 +109,20 @@ export const TVAPI_ParmsObj = {
 };
 
 export const MovieAPI_ParmsObj = {
-  rawSearchMovieByTitle: {
-    func: fuctionFactory(rawSearchMovieByTitle),
+  rawMovieSearchByTitle: {
+    func: fuctionFactory(rawMovieSearchByTitle),
     parms: ["title"]
   },
-  rawGetMovieDetails: {
-    func: fuctionFactory(rawGetMovieDetails),
+  rawMovieGetDetails: {
+    func: fuctionFactory(rawMovieGetDetails),
     parms: ["movieId"]
   },
-  rawGetMovieImages: {
-    func: fuctionFactory(rawGetMovieImages),
+  rawMovieGetImages: {
+    func: fuctionFactory(rawMovieGetImages),
     parms: ["movieId"]
   },
-  rawGetPersonDetails_Movie: {
-    func: fuctionFactory(rawGetPersonDetails_Movie),
+  rawMovieGetPersonDetails: {
+    func: fuctionFactory(rawMovieGetPersonDetails),
     parms: ["personId"]
   }
 };
