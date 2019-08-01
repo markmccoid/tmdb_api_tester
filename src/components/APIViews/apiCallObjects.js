@@ -23,15 +23,15 @@ import {
 } from "tmdb_api";
 
 // Curated TV API Imports
-import { getImagesForShow, tvSearchByTitle, tvGetShowDetails } from "tmdb_api";
+import { tvGetImages, tvSearchByTitle, tvGetShowDetails } from "tmdb_api";
 
 // Curated Movie API Imports
 import {
   movieSearchByTitle,
   movieGetMovieDetails,
-  getImagesForMovie,
+  movieGetImages,
   movieGetPersonDetails,
-  discoverMovies
+  movieDiscover
 } from "tmdb_api";
 
 // returns a function that will accept 0 to n arguments
@@ -128,8 +128,8 @@ export const MovieAPI_ParmsObj = {
 };
 
 export const APITV_ParmsObj = {
-  getImagesForShow: {
-    func: fuctionFactory(getImagesForShow),
+  tvGetImages: {
+    func: fuctionFactory(tvGetImages),
     parms: ["showId", "imageType"]
   },
   tvSearchByTitle: {
@@ -155,16 +155,16 @@ export const APIMovie_ParmsObj = {
     func: fuctionFactory(movieGetMovieDetails),
     parms: ["movieId"]
   },
-  getImagesForMovie: {
-    func: fuctionFactory(getImagesForMovie),
+  movieGetImages: {
+    func: fuctionFactory(movieGetImages),
     parms: ["movieId", "imageType"]
   },
   movieGetPersonDetails: {
     func: fuctionFactory(movieGetPersonDetails),
     parms: ["[personId]"]
   },
-  discoverMovies: {
-    func: fuctionFactory(discoverMovies),
+  movieDiscover: {
+    func: fuctionFactory(movieDiscover),
     parms: ["genreIds", "ReleaseYear", "ReleaseDate GTE", "castIds"]
   }
 };
