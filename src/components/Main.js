@@ -7,6 +7,7 @@ import {
   generalObj,
   TVAPI_ParmsObj,
   MovieAPI_ParmsObj,
+  APIGEN_ParmsObj,
   APITV_ParmsObj,
   APIMovie_ParmsObj
 } from "./APIViews/apiCallObjects";
@@ -28,7 +29,7 @@ const Grid = styled.div`
 const sidebarItems = [
   {
     id: 0,
-    label: "General",
+    label: "Raw General",
     subMenuItems: generalObj
   },
   {
@@ -43,12 +44,17 @@ const sidebarItems = [
   },
   {
     id: 3,
-    label: "TV API",
-    subMenuItems: APITV_ParmsObj
+    label: "Curated General",
+    subMenuItems: APIGEN_ParmsObj
   },
   {
     id: 4,
-    label: "Movie API",
+    label: "Curated TV API",
+    subMenuItems: APITV_ParmsObj
+  },
+  {
+    id: 5,
+    label: "Curated Movie API",
     subMenuItems: APIMovie_ParmsObj
   }
 ];

@@ -8,7 +8,9 @@ import {
   rawTVGetCreditDetails,
   getTVGenres,
   rawGetPersonDetails,
-  rawTVGetShowImages
+  rawGetPersonCombinedCredits,
+  rawTVGetShowImages,
+  rawGetPersonImages
 } from "tmdb_api";
 
 // Movie API imports
@@ -25,6 +27,7 @@ import {
 // Curated TV API Imports
 import {
   getPersonDetails,
+  getPersonImages,
   tvGetImages,
   tvSearchByTitle,
   tvGetShowDetails,
@@ -34,7 +37,7 @@ import {
 // Curated Movie API Imports
 import {
   movieSearchByTitle,
-  movieGetMovieDetails,
+  movieGetDetails,
   movieGetImages,
   movieGetPersonCredits,
   movieDiscover
@@ -61,6 +64,7 @@ const fuctionFactory = fn => {
   return callFunction;
 };
 
+//------ GENERAL RAW ------//
 export const generalObj = {
   getConfig: {
     func: fuctionFactory(getConfig),
@@ -70,19 +74,21 @@ export const generalObj = {
     func: fuctionFactory(rawSearchForPerson),
     parms: ["personName", "page"]
   },
-  searchForPersonId: {
-    func: fuctionFactory(searchForPersonId),
-    parms: ["personName", "page"]
-  },
   rawGetPersonDetails: {
     func: fuctionFactory(rawGetPersonDetails),
     parms: ["personId"]
   },
-  getPersonDetails: {
-    func: fuctionFactory(getPersonDetails),
+  rawGetPersonCombinedCredits: {
+    func: fuctionFactory(rawGetPersonCombinedCredits),
+    parms: ["personId"]
+  },
+  rawGetPersonImages: {
+    func: fuctionFactory(rawGetPersonImages),
     parms: ["personId"]
   }
 };
+
+//------ TV RAW ------//
 export const TVAPI_ParmsObj = {
   getTVGenres: {
     func: fuctionFactory(getTVGenres),
@@ -118,6 +124,7 @@ export const TVAPI_ParmsObj = {
   }
 };
 
+//------ MOVIE RAW ------//
 export const MovieAPI_ParmsObj = {
   rawMovieSearchByTitle: {
     func: fuctionFactory(rawMovieSearchByTitle),
@@ -137,6 +144,23 @@ export const MovieAPI_ParmsObj = {
   }
 };
 
+//------ CURATED RAW ------//
+export const APIGEN_ParmsObj = {
+  searchForPersonId: {
+    func: fuctionFactory(searchForPersonId),
+    parms: ["personName", "page"]
+  },
+  getPersonDetails: {
+    func: fuctionFactory(getPersonDetails),
+    parms: ["personId"]
+  },
+  getPersonImages: {
+    func: fuctionFactory(getPersonImages),
+    parms: ["personId"]
+  }
+};
+
+//------ TV CURATED ------//
 export const APITV_ParmsObj = {
   tvGetImages: {
     func: fuctionFactory(tvGetImages),
@@ -156,6 +180,7 @@ export const APITV_ParmsObj = {
   }
 };
 
+//------ MOVIE CURATED ------//
 export const APIMovie_ParmsObj = {
   getMovieGenres: {
     func: fuctionFactory(getMovieGenres),
@@ -165,8 +190,8 @@ export const APIMovie_ParmsObj = {
     func: fuctionFactory(movieSearchByTitle),
     parms: ["searchText", "page"]
   },
-  movieGetMovieDetails: {
-    func: fuctionFactory(movieGetMovieDetails),
+  movieGetDetails: {
+    func: fuctionFactory(movieGetDetails),
     parms: ["movieId"]
   },
   movieGetImages: {
