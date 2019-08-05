@@ -19,6 +19,7 @@ import {
   rawMovieGetDetails,
   rawMovieGetImages,
   rawMovieGetPersonCredits,
+  rawMovieGetCredits,
   rawSearchForPerson,
   searchForPersonId,
   getMovieGenres
@@ -40,6 +41,7 @@ import {
   movieGetDetails,
   movieGetImages,
   movieGetPersonCredits,
+  movieGetCredits,
   movieDiscover
 } from "tmdb_api";
 
@@ -48,12 +50,16 @@ const fuctionFactory = fn => {
   let callFunction = async (...rest) => {
     console.log("ARGS", rest);
     // If function is discoverMovies the expect a JSON string
+    // NOTE: order of the rest array is important!
     // '{"name": "value"}'
     if (fn.name === "movieDiscover") {
       let obj = {
         genres: rest[0] ? rest[0].split(",") : undefined,
         releaseYear: rest[1],
-        releaseDateGTE: rest[2]
+        releaseDateGTE: rest[2],
+        releaseDateLTE: rest[3],
+        cast: rest[4] ? rest[4].split(",") : undefined,
+        crew: rest[5] ? rest[5].split(",") : undefined
       };
       // let obj = JSON.parse(rest);
       return await fn(obj);
@@ -141,6 +147,10 @@ export const MovieAPI_ParmsObj = {
   rawMovieGetPersonCredits: {
     func: fuctionFactory(rawMovieGetPersonCredits),
     parms: ["personId"]
+  },
+  rawMovieGetCredits: {
+    func: fuctionFactory(rawMovieGetCredits),
+    parms: ["movieId"]
   }
 };
 
@@ -200,10 +210,21 @@ export const APIMovie_ParmsObj = {
   },
   movieGetPersonCredits: {
     func: fuctionFactory(movieGetPersonCredits),
-    parms: ["[personId]"]
+    parms: ["personId"]
+  },
+  movieGetCredits: {
+    func: fuctionFactory(movieGetCredits),
+    parms: ["movieId"]
   },
   movieDiscover: {
     func: fuctionFactory(movieDiscover),
-    parms: ["genreIds", "ReleaseYear", "ReleaseDate GTE", "castIds"]
+    parms: [
+      "genreIds",
+      "ReleaseYear",
+      "ReleaseDate GTE",
+      "ReleaseDate LTE",
+      "castIds",
+      "crewIds"
+    ]
   }
 };
