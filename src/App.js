@@ -5,7 +5,9 @@ import Main from "./components/Main";
 import { initTMDB } from "tmdb_api";
 
 function App() {
-  initTMDB("0e4935aa81b04539beb687d04ff414e3");
+  initTMDB("0e4935aa81b04539beb687d04ff414e3", {
+    dateFormatString: "MMM-dd-yyyy"
+  });
   return (
     <div
       style={{
@@ -13,7 +15,7 @@ function App() {
         backgroundColor: "#57595b"
       }}
     >
-      <header style={{ fontSize: "1.5rem", color: "white" }}>
+      <header style={{ fontSize: "1.5rem", color: "white", height: "40px" }}>
         TMDB API Wrapper
       </header>
       <Main />

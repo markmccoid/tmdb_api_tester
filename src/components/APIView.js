@@ -6,6 +6,7 @@ import APICall from "./APIViews/APICall";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: lightgray;
 `;
 const Header = styled.div`
   background: rgb(75.3%, 75.3%, 75.3%);

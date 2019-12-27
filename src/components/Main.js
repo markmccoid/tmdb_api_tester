@@ -17,7 +17,7 @@ import * as apis from "tmdb_api";
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 250px auto;
-  min-height: 90vh;
+  min-height: calc(100vh - 40px);
   margin: 0 15%;
   border: 1px solid gray;
 `;

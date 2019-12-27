@@ -23,6 +23,7 @@ const Header = styled.div`
 const InputWrapper = styled.div`
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   margin: 10px 0 0 10px;
 `;
 
