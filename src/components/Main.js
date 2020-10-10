@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import styled from "styled-components";
+import React, { useState } from 'react';
+import styled from 'styled-components';
 
-import Sidebar from "./Sidebar/Sidebar";
-import APIView from "./APIView";
+import Sidebar from './Sidebar/Sidebar';
+import APIView from './APIView';
 import {
   generalObj,
   TVAPI_ParmsObj,
   MovieAPI_ParmsObj,
   APIGEN_ParmsObj,
   APITV_ParmsObj,
-  APIMovie_ParmsObj
-} from "./APIViews/apiCallObjects";
+  APIMovie_ParmsObj,
+} from './APIViews/apiCallObjects';
 
-import * as apis from "tmdb_api";
+import * as apis from '@markmccoid/tmdb_api';
 
 const Grid = styled.div`
   display: grid;
@@ -29,34 +29,34 @@ const Grid = styled.div`
 const sidebarItems = [
   {
     id: 0,
-    label: "Raw General",
-    subMenuItems: generalObj
+    label: 'Raw General',
+    subMenuItems: generalObj,
   },
   {
     id: 1,
-    label: "Raw TV API",
-    subMenuItems: TVAPI_ParmsObj
+    label: 'Raw TV API',
+    subMenuItems: TVAPI_ParmsObj,
   },
   {
     id: 2,
-    label: "Raw Movie API",
-    subMenuItems: MovieAPI_ParmsObj
+    label: 'Raw Movie API',
+    subMenuItems: MovieAPI_ParmsObj,
   },
   {
     id: 3,
-    label: "Curated General",
-    subMenuItems: APIGEN_ParmsObj
+    label: 'Curated General',
+    subMenuItems: APIGEN_ParmsObj,
   },
   {
     id: 4,
-    label: "Curated TV API",
-    subMenuItems: APITV_ParmsObj
+    label: 'Curated TV API',
+    subMenuItems: APITV_ParmsObj,
   },
   {
     id: 5,
-    label: "Curated Movie API",
-    subMenuItems: APIMovie_ParmsObj
-  }
+    label: 'Curated Movie API',
+    subMenuItems: APIMovie_ParmsObj,
+  },
 ];
 
 const Main = () => {
