@@ -10,6 +10,7 @@ import {
   rawGetPersonCombinedCredits,
   rawTVGetShowImages,
   rawGetPersonImages,
+  rawMovieWatchProviders,
 } from '@markmccoid/tmdb_api';
 
 // Movie API imports
@@ -23,6 +24,7 @@ import {
   rawMovieGetCredits,
   rawSearchForPerson,
   rawMovieGetPopular,
+  movieGetUpcoming,
   rawMovieGetNowPlaying,
   searchForPersonId,
   getMovieGenres,
@@ -42,6 +44,7 @@ import {
 // Curated Movie API Imports
 import {
   movieSearchByTitle,
+  movieGetWatchProviders,
   movieGetDetails,
   movieGetVideos,
   movieGetRecommendations,
@@ -70,9 +73,15 @@ const fuctionFactory = (fn) => {
         cast: rest[5] ? rest[5].split(',') : undefined,
         castCompareType: rest[6],
         crew: rest[7] ? rest[7].split(',') : undefined,
+        watchProviders: rest[8] ? rest[8].split(',') : undefined,
+        regions: rest[9] ? rest[9].split(',') : undefined,
       };
       // let obj = JSON.parse(rest);
       return await fn(obj);
+    }
+    if (fn.name === 'movieGetWatchProviders') {
+      let countryCodes = rest[1] ? rest[1].split(',') : undefined;
+      return await fn(rest[0], countryCodes);
     }
     const results = await fn(...rest);
     return results;
@@ -110,6 +119,7 @@ export const TVAPI_ParmsObj = {
     func: fuctionFactory(getTVGenres),
     parms: [],
   },
+
   rawTVSearchByTitle: {
     func: fuctionFactory(rawTVSearchByTitle),
     parms: ['title'],
@@ -145,6 +155,10 @@ export const MovieAPI_ParmsObj = {
   rawMovieSearchByTitle: {
     func: fuctionFactory(rawMovieSearchByTitle),
     parms: ['title'],
+  },
+  rawMovieWatchProviders: {
+    func: fuctionFactory(rawMovieWatchProviders),
+    parms: ['movieId'],
   },
   rawMovieGetDetails: {
     func: fuctionFactory(rawMovieGetDetails),
@@ -226,6 +240,10 @@ export const APIMovie_ParmsObj = {
     func: fuctionFactory(getMovieGenres),
     parms: ['convertToObject'],
   },
+  movieGetWatchProviders: {
+    func: fuctionFactory(movieGetWatchProviders),
+    parms: ['moveiId', 'countryCodes []'],
+  },
   movieSearchByTitle: {
     func: fuctionFactory(movieSearchByTitle),
     parms: ['searchText', 'page'],
@@ -262,6 +280,10 @@ export const APIMovie_ParmsObj = {
     func: fuctionFactory(movieGetNowPlaying),
     parms: ['page'],
   },
+  movieGetUpcoming: {
+    func: fuctionFactory(movieGetUpcoming),
+    parms: ['page'],
+  },
   movieDiscover: {
     func: fuctionFactory(movieDiscover),
     parms: [
@@ -273,6 +295,8 @@ export const APIMovie_ParmsObj = {
       'castIds',
       'castCompareType',
       'crewIds',
+      'watchProviders',
+      'regions',
     ],
   },
 };
