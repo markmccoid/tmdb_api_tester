@@ -83,7 +83,10 @@ const fuctionFactory = (fn) => {
       // let obj = JSON.parse(rest);
       return await fn(obj);
     }
-    if (fn.name === "movieGetWatchProviders" || fn.name === "tvGetWatchProviders") {
+    if (
+      fn.name === "movieGetWatchProviders" ||
+      fn.name === "tvGetWatchProviders"
+    ) {
       let countryCodes = rest[1] ? rest[1].split(",") : undefined;
       return await fn(rest[0], countryCodes);
     }
