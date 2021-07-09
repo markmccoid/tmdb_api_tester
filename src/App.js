@@ -8,6 +8,7 @@ function App() {
   initTMDB('0e4935aa81b04539beb687d04ff414e3', {
     dateFormatString: 'MMM-dd-yyyy',
   });
+  
   return (
     <div
       style={{

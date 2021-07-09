@@ -13,7 +13,7 @@ import {
   rawMovieWatchProviders,
   rawTVWatchProviders,
   rawTVGetPopular,
-} from "@markmccoid/tmdb_api";
+} from '@markmccoid/tmdb_api';
 
 // Movie API imports
 import {
@@ -32,7 +32,7 @@ import {
   getMovieGenres,
   tvGetWatchProviders,
   tvGetPopular,
-} from "@markmccoid/tmdb_api";
+} from '@markmccoid/tmdb_api';
 
 // Curated TV API Imports
 import {
@@ -43,7 +43,8 @@ import {
   tvSearchByTitle,
   tvGetShowDetails,
   tvGetShowCredits,
-} from "@markmccoid/tmdb_api";
+  tvGetShowSeasonDetails,
+} from '@markmccoid/tmdb_api';
 
 // Curated Movie API Imports
 import {
@@ -58,36 +59,36 @@ import {
   movieGetPopular,
   movieGetNowPlaying,
   movieDiscover,
-} from "@markmccoid/tmdb_api";
+} from '@markmccoid/tmdb_api';
 
 // returns a function that will accept 0 to n arguments
 const fuctionFactory = (fn) => {
   let callFunction = async (...rest) => {
-    console.log("ARGS", rest);
+    console.log('ARGS', rest);
     // If function is discoverMovies the expect a JSON string
     // NOTE: order of the rest array is important!
     // '{"name": "value"}'
-    if (fn.name === "movieDiscover") {
+    if (fn.name === 'movieDiscover') {
       let obj = {
-        genres: rest[0] ? rest[0].split(",") : undefined,
+        genres: rest[0] ? rest[0].split(',') : undefined,
         genreCompareType: rest[1],
         releaseYear: rest[2],
         releaseDateGTE: rest[3],
         releaseDateLTE: rest[4],
-        cast: rest[5] ? rest[5].split(",") : undefined,
+        cast: rest[5] ? rest[5].split(',') : undefined,
         castCompareType: rest[6],
-        crew: rest[7] ? rest[7].split(",") : undefined,
-        watchProviders: rest[8] ? rest[8].split(",") : undefined,
-        regions: rest[9] ? rest[9].split(",") : undefined,
+        crew: rest[7] ? rest[7].split(',') : undefined,
+        watchProviders: rest[8] ? rest[8].split(',') : undefined,
+        regions: rest[9] ? rest[9].split(',') : undefined,
       };
       // let obj = JSON.parse(rest);
       return await fn(obj);
     }
     if (
-      fn.name === "movieGetWatchProviders" ||
-      fn.name === "tvGetWatchProviders"
+      fn.name === 'movieGetWatchProviders' ||
+      fn.name === 'tvGetWatchProviders'
     ) {
-      let countryCodes = rest[1] ? rest[1].split(",") : undefined;
+      let countryCodes = rest[1] ? rest[1].split(',') : undefined;
       return await fn(rest[0], countryCodes);
     }
     const results = await fn(...rest);
@@ -104,19 +105,19 @@ export const generalObj = {
   },
   rawSearchForPerson: {
     func: fuctionFactory(rawSearchForPerson),
-    parms: ["personName", "page"],
+    parms: ['personName', 'page'],
   },
   rawGetPersonDetails: {
     func: fuctionFactory(rawGetPersonDetails),
-    parms: ["personId"],
+    parms: ['personId'],
   },
   rawGetPersonCombinedCredits: {
     func: fuctionFactory(rawGetPersonCombinedCredits),
-    parms: ["personId"],
+    parms: ['personId'],
   },
   rawGetPersonImages: {
     func: fuctionFactory(rawGetPersonImages),
-    parms: ["personId"],
+    parms: ['personId'],
   },
 };
 
@@ -129,39 +130,39 @@ export const TVAPI_ParmsObj = {
 
   rawTVSearchByTitle: {
     func: fuctionFactory(rawTVSearchByTitle),
-    parms: ["title"],
+    parms: ['title'],
   },
   rawTVGetEpisodes: {
     func: fuctionFactory(rawTVGetEpisodes),
-    parms: ["showId", "seasonNum"],
+    parms: ['showId', 'seasonNum'],
   },
   rawTVGetShowDetails: {
     func: fuctionFactory(rawTVGetShowDetails),
-    parms: ["showId"],
+    parms: ['showId'],
   },
   rawTVGetShowImages: {
     func: fuctionFactory(rawTVGetShowImages),
-    parms: ["showId"],
+    parms: ['showId'],
   },
   rawTVGetExternalIds: {
     func: fuctionFactory(rawTVGetExternalIds),
-    parms: ["showId"],
+    parms: ['showId'],
   },
   rawTVGetShowCredits: {
     func: fuctionFactory(rawTVGetShowCredits),
-    parms: ["showId"],
+    parms: ['showId'],
   },
   rawTVGetCreditDetails: {
     func: fuctionFactory(rawTVGetCreditDetails),
-    parms: ["creditId"],
+    parms: ['creditId'],
   },
   rawTVWatchProviders: {
     func: fuctionFactory(rawTVWatchProviders),
-    parms: ["tvId", "CountryCode"],
+    parms: ['tvId', 'CountryCode'],
   },
   rawTVGetPopular: {
     func: fuctionFactory(rawTVGetPopular),
-    parms: ["page"],
+    parms: ['page'],
   },
 };
 
@@ -169,43 +170,43 @@ export const TVAPI_ParmsObj = {
 export const MovieAPI_ParmsObj = {
   rawMovieSearchByTitle: {
     func: fuctionFactory(rawMovieSearchByTitle),
-    parms: ["title"],
+    parms: ['title'],
   },
   rawMovieWatchProviders: {
     func: fuctionFactory(rawMovieWatchProviders),
-    parms: ["movieId"],
+    parms: ['movieId'],
   },
   rawMovieGetDetails: {
     func: fuctionFactory(rawMovieGetDetails),
-    parms: ["movieId"],
+    parms: ['movieId'],
   },
   rawMovieGetVideos: {
     func: fuctionFactory(rawMovieGetVideos),
-    parms: ["movieId"],
+    parms: ['movieId'],
   },
   rawMovieGetRecommendations: {
     func: fuctionFactory(rawMovieGetRecommendations),
-    parms: ["movieId"],
+    parms: ['movieId'],
   },
   rawMovieGetImages: {
     func: fuctionFactory(rawMovieGetImages),
-    parms: ["movieId"],
+    parms: ['movieId'],
   },
   rawMovieGetPersonCredits: {
     func: fuctionFactory(rawMovieGetPersonCredits),
-    parms: ["personId"],
+    parms: ['personId'],
   },
   rawMovieGetCredits: {
     func: fuctionFactory(rawMovieGetCredits),
-    parms: ["movieId"],
+    parms: ['movieId'],
   },
   rawMovieGetPopular: {
     func: fuctionFactory(rawMovieGetPopular),
-    parms: ["page"],
+    parms: ['page'],
   },
   rawMovieGetNowPlaying: {
     func: fuctionFactory(rawMovieGetNowPlaying),
-    parms: ["page"],
+    parms: ['page'],
   },
 };
 
@@ -213,15 +214,15 @@ export const MovieAPI_ParmsObj = {
 export const APIGEN_ParmsObj = {
   searchForPersonId: {
     func: fuctionFactory(searchForPersonId),
-    parms: ["personName", "page"],
+    parms: ['personName', 'page'],
   },
   getPersonDetails: {
     func: fuctionFactory(getPersonDetails),
-    parms: ["personId"],
+    parms: ['personId'],
   },
   getPersonImages: {
     func: fuctionFactory(getPersonImages),
-    parms: ["personId"],
+    parms: ['personId'],
   },
 };
 
@@ -229,31 +230,35 @@ export const APIGEN_ParmsObj = {
 export const APITV_ParmsObj = {
   getTVGenres: {
     func: fuctionFactory(getTVGenres),
-    parms: ["convertToObject"],
+    parms: ['convertToObject'],
   },
   tvGetImages: {
     func: fuctionFactory(tvGetImages),
-    parms: ["showId", "imageType"],
+    parms: ['showId', 'imageType'],
   },
   tvSearchByTitle: {
     func: fuctionFactory(tvSearchByTitle),
-    parms: ["searchText", "page"],
+    parms: ['searchText', 'page'],
   },
   tvGetShowDetails: {
     func: fuctionFactory(tvGetShowDetails),
-    parms: ["showId"],
+    parms: ['showId'],
+  },
+  tvGetShowSeasonDetails: {
+    func: fuctionFactory(tvGetShowSeasonDetails),
+    parms: ['showId', 'seasonNumber'],
   },
   tvGetShowCredits: {
     func: fuctionFactory(tvGetShowCredits),
-    parms: ["showId"],
+    parms: ['showId'],
   },
   tvGetWatchProviders: {
     func: fuctionFactory(tvGetWatchProviders),
-    parms: ["tvId", "countryCodes"],
+    parms: ['tvId', 'countryCodes'],
   },
   tvGetPopular: {
     func: fuctionFactory(tvGetPopular),
-    parms: ["page"],
+    parms: ['page'],
   },
 };
 
@@ -261,65 +266,65 @@ export const APITV_ParmsObj = {
 export const APIMovie_ParmsObj = {
   getMovieGenres: {
     func: fuctionFactory(getMovieGenres),
-    parms: ["convertToObject"],
+    parms: ['convertToObject'],
   },
   movieGetWatchProviders: {
     func: fuctionFactory(movieGetWatchProviders),
-    parms: ["moveiId", "countryCodes []"],
+    parms: ['moveiId', 'countryCodes []'],
   },
   movieSearchByTitle: {
     func: fuctionFactory(movieSearchByTitle),
-    parms: ["searchText", "page"],
+    parms: ['searchText', 'page'],
   },
   movieGetDetails: {
     func: fuctionFactory(movieGetDetails),
-    parms: ["movieId"],
+    parms: ['movieId'],
   },
   movieGetVideos: {
     func: fuctionFactory(movieGetVideos),
-    parms: ["movieId"],
+    parms: ['movieId'],
   },
   movieGetRecommendations: {
     func: fuctionFactory(movieGetRecommendations),
-    parms: ["movieId"],
+    parms: ['movieId'],
   },
   movieGetImages: {
     func: fuctionFactory(movieGetImages),
-    parms: ["movieId", "imageType"],
+    parms: ['movieId', 'imageType'],
   },
   movieGetPersonCredits: {
     func: fuctionFactory(movieGetPersonCredits),
-    parms: ["personId"],
+    parms: ['personId'],
   },
   movieGetCredits: {
     func: fuctionFactory(movieGetCredits),
-    parms: ["movieId"],
+    parms: ['movieId'],
   },
   movieGetPopular: {
     func: fuctionFactory(movieGetPopular),
-    parms: ["page"],
+    parms: ['page'],
   },
   movieGetNowPlaying: {
     func: fuctionFactory(movieGetNowPlaying),
-    parms: ["page"],
+    parms: ['page'],
   },
   movieGetUpcoming: {
     func: fuctionFactory(movieGetUpcoming),
-    parms: ["page"],
+    parms: ['page'],
   },
   movieDiscover: {
     func: fuctionFactory(movieDiscover),
     parms: [
-      "genreIds",
-      "genreCompareType",
-      "ReleaseYear",
-      "ReleaseDate GTE",
-      "ReleaseDate LTE",
-      "castIds",
-      "castCompareType",
-      "crewIds",
-      "watchProviders",
-      "regions",
+      'genreIds',
+      'genreCompareType',
+      'ReleaseYear',
+      'ReleaseDate GTE',
+      'ReleaseDate LTE',
+      'castIds',
+      'castCompareType',
+      'crewIds',
+      'watchProviders',
+      'regions',
     ],
   },
 };

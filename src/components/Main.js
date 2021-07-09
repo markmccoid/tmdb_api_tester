@@ -63,6 +63,7 @@ const Main = () => {
   let [sidebarState, setSidebar] = useState(sidebarItems[0].id);
   let [subMenuState, setSubMenu] = useState();
   console.log(Object.keys(apis));
+
   return (
     <Grid>
       <Sidebar
