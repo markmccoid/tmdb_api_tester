@@ -1,10 +1,10 @@
-import React, { useState, useEffect, Suspense } from "react";
+import React, { useState, useEffect, Suspense } from 'react';
 //import { Tabs, TabList, Tab, TabPanels, TabPanel } from "@reach/tabs"
-import styled from "styled-components";
-import { Button } from "antd";
+import styled from 'styled-components';
+import { Button } from 'antd';
 //import APIResults from './APIResults';
-import APIFunctions from "./APIFunctions";
-import APIResults from "./APIResults";
+import APIFunctions from './APIFunctions';
+import APIResults from './APIResults';
 
 const Wrapper = styled.div`
   display: flex;
@@ -50,11 +50,11 @@ const ButtonWrapper = styled.div`
 //   width: 100px;
 // `;
 
-let getInitialState = parms => {
+let getInitialState = (parms) => {
   let parmsState = [];
-  parms.forEach(parm => {
+  parms.forEach((parm) => {
     parmsState.push({
-      value: ""
+      value: '',
     });
   });
   return parmsState;
@@ -92,7 +92,7 @@ const APICall = ({ location, apiCallFunction, parms }) => {
                 <Label>{field.charAt(0).toUpperCase() + field.slice(1)}:</Label>
                 <Input
                   value={fields[idx].value}
-                  onChange={e => handleChange(idx, e)}
+                  onChange={(e) => handleChange(idx, e)}
                 />
               </div>
             );
@@ -104,7 +104,11 @@ const APICall = ({ location, apiCallFunction, parms }) => {
           onClick={async () =>
             setResults(
               await apiCallFunction(
-                ...fields.map(field => {
+                ...fields.map((field) => {
+                  // console.log('FI ELD', typeof field, field);
+                  if (field.value.substring(0, 2) === '[]') {
+                    return field.value.substring(2).split(',');
+                  }
                   return field.value.length > 0 ? field.value : undefined;
                 })
               )

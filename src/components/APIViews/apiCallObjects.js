@@ -13,6 +13,8 @@ import {
   rawMovieWatchProviders,
   rawTVWatchProviders,
   rawTVGetPopular,
+  rawTVGetShowSeasonDetails,
+  rawTVGetShowEpisodeDetails,
 } from '@markmccoid/tmdb_api';
 
 // Movie API imports
@@ -44,6 +46,7 @@ import {
   tvGetShowDetails,
   tvGetShowCredits,
   tvGetShowSeasonDetails,
+  tvGetShowEpisodeDetails,
 } from '@markmccoid/tmdb_api';
 
 // Curated Movie API Imports
@@ -144,6 +147,14 @@ export const TVAPI_ParmsObj = {
     func: fuctionFactory(rawTVGetShowImages),
     parms: ['showId'],
   },
+  rawTVGetShowSeasonDetails: {
+    func: fuctionFactory(rawTVGetShowSeasonDetails),
+    parms: ['showId', 'seasonNumber'],
+  },
+  rawTVGetShowEpisodeDetails: {
+    func: fuctionFactory(rawTVGetShowEpisodeDetails),
+    parms: ['showId', 'seasonNumber', 'episodeNumber'],
+  },
   rawTVGetExternalIds: {
     func: fuctionFactory(rawTVGetExternalIds),
     parms: ['showId'],
@@ -242,11 +253,15 @@ export const APITV_ParmsObj = {
   },
   tvGetShowDetails: {
     func: fuctionFactory(tvGetShowDetails),
-    parms: ['showId'],
+    parms: ['showId', 'appendParams'],
   },
   tvGetShowSeasonDetails: {
     func: fuctionFactory(tvGetShowSeasonDetails),
     parms: ['showId', 'seasonNumber'],
+  },
+  tvGetShowEpisodeDetails: {
+    func: fuctionFactory(tvGetShowEpisodeDetails),
+    parms: ['showId', 'seasonNumber', 'episodeNumber'],
   },
   tvGetShowCredits: {
     func: fuctionFactory(tvGetShowCredits),
