@@ -47,6 +47,7 @@ import {
   tvGetShowCredits,
   tvGetShowSeasonDetails,
   tvGetShowEpisodeDetails,
+  tvGetShowEpisodeExternalIds,
 } from '@markmccoid/tmdb_api';
 
 // Curated Movie API Imports
@@ -261,6 +262,10 @@ export const APITV_ParmsObj = {
   },
   tvGetShowEpisodeDetails: {
     func: fuctionFactory(tvGetShowEpisodeDetails),
+    parms: ['showId', 'seasonNumber', 'episodeNumber'],
+  },
+  tvGetShowEpisodeExternalIds: {
+    func: fuctionFactory(tvGetShowEpisodeExternalIds),
     parms: ['showId', 'seasonNumber', 'episodeNumber'],
   },
   tvGetShowCredits: {
