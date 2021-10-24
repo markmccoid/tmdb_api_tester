@@ -1106,15 +1106,15 @@
     "@types/istanbul-lib-coverage" "^2.0.0"
     "@types/yargs" "^12.0.9"
 
-"@markmccoid/tmdb_api@^0.2.2":
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/@markmccoid/tmdb_api/-/tmdb_api-0.2.2.tgz#f7e0b55c700830d260f6393bc589d8bbb78e2c92"
-  integrity sha512-XaF597w8jBwlmXG6kno+IwT4bDoSPWuNitDTyhMVZSrRfX5RxlKCGAvDP0UcTvq9275RxS5VGy8rsCz3X0+H0w==
+"@markmccoid/tmdb_api@^0.2.4":
+  version "0.2.9"
+  resolved "https://registry.yarnpkg.com/@markmccoid/tmdb_api/-/tmdb_api-0.2.9.tgz#8f523c99641d4c545734ffd7906edb4f23988c7e"
+  integrity sha512-hS/bM6IbSEa0DhQRzS4j0hE6AnFPjO+16pMfigo8JAVNP712JE6qedWDHf7GfaSHe+GC6QKMlNFc178O9QoHdQ==
   dependencies:
     "@babel/runtime" "^7.7.7"
     axios "^0.21.1"
     date-fns "^2.7.0"
-    lodash "^4.x"
+    lodash "^4.17.21"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -2679,9 +2679,9 @@ color-name@^1.0.0:
   integrity sha512-dOy+3AuW3a2wNbZHIuMZpTcgjGuLU/uBL/ubcZF9OXbDo8ff4O8yVp5Bf0efS8uEoYo5q4Fx7dY9OgQGXgAsQA==
 
 color-string@^1.5.2:
-  version "1.5.3"
-  resolved "https://registry.yarnpkg.com/color-string/-/color-string-1.5.3.tgz#c9bbc5f01b58b5492f3d6857459cb6590ce204cc"
-  integrity sha512-dC2C5qeWoYkxki5UAXapdjqO672AM4vZuPGRQfO8b5HKuKGBbKWpITyDYN7TOFKvRW7kOgAn3746clDBMDJyQw==
+  version "1.6.0"
+  resolved "https://registry.yarnpkg.com/color-string/-/color-string-1.6.0.tgz#c3915f61fe267672cb7e1e064c9d692219f6c312"
+  integrity sha512-c/hGS+kRWJutUBEngKKmk4iH3sD59MBkoxVapS/0wgpCz2u7XsNloxknyvBhzwEs1IbV36D9PwqLPJ2DTu3vMA==
   dependencies:
     color-name "^1.0.0"
     simple-swizzle "^0.2.2"
@@ -6351,7 +6351,7 @@ lodash@^4.16.5, lodash@^4.17.13, lodash@^4.17.4:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
   integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
 
-lodash@^4.x:
+lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
