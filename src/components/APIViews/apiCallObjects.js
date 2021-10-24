@@ -262,7 +262,7 @@ export const APITV_ParmsObj = {
   },
   tvGetShowEpisodeDetails: {
     func: fuctionFactory(tvGetShowEpisodeDetails),
-    parms: ['showId', 'seasonNumber', 'episodeNumber'],
+    parms: ['showId', 'seasonNumber', 'episodeNumber', 'appendParams'],
   },
   tvGetShowEpisodeExternalIds: {
     func: fuctionFactory(tvGetShowEpisodeExternalIds),
